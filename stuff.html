@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Chat</title>
+  </head>
+  <body>
+    <script>
+      // Create chat box
+      const chatBox = document.createElement('div');
+      chatBox.style.border = '1px solid #ccc';
+      chatBox.style.height = '150px';
+      chatBox.style.width = '300px';
+      chatBox.style.overflowY = 'auto';
+      chatBox.style.marginBottom = '10px';
+      chatBox.id = 'chatBox';
+      document.body.appendChild(chatBox);
+
+      // Create input box
+      const chatInput = document.createElement('input');
+      chatInput.type = 'text';
+      chatInput.id = 'chatInput';
+      chatInput.placeholder = 'Type your message...';
+      document.body.appendChild(chatInput);
+
+      // Create send button
+      const sendButton = document.createElement('button');
+      sendButton.textContent = 'Send';
+      document.body.appendChild(sendButton);
+
+      // Send message function
+      sendButton.onclick = function() {
+        const message = chatInput.value;
+        if (message.trim() !== '') {
+          chatBox.innerHTML += `<div>${message}</div>`;
+          chatInput.value = '';
+          chatBox.scrollTop = chatBox.scrollHeight;
+        }
+      };
+    </script>
+  </body>
+</html>
